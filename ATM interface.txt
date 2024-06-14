@@ -1,0 +1,44 @@
+package atm;
+import java.io.*;
+import java.util.*;
+public class ATM {
+   public static void displayBalance(int balance){
+      System.out.println("Current balance:"+balance);
+      System.out.println();
+   }
+   public static int amountWithdrawing(int balance,int withdrawAmount){
+       System.out.println("Withdraw");
+       System.out.println("Withdrawing Amount:"+withdrawAmount);
+       if(balance >= withdrawAmount){
+          balance=balance - withdrawAmount;
+          System.out.println("collect your withdraw money");
+          displayBalance(balance);
+       }
+       else{
+           System.out.println("Sorry! withdraw is insufficient");
+           System.out.println();
+       }
+       return balance;
+   }
+   public static int amountDepositing(int balance,int depositAmount){
+       System.out.println("Deposit");
+       System.out.println("Depositing Amount:"+depositAmount);
+       balance=balance + depositAmount;
+       System.out.println("Money has been successfully deposited");
+       displayBalance(balance);
+       return balance;
+   }
+   public static void main(String args[]){
+       Scanner sc=new Scanner(System.in);
+       int balance,withdrawAmount,depositAmount;
+       System.out.println("Balance Amount:");
+       balance=sc.nextInt();
+       System.out.println("Withdraw Amount:");
+       withdrawAmount=sc.nextInt();
+       System.out.println("Deposit Amount:");
+       depositAmount=sc.nextInt();
+       displayBalance(balance);
+       balance=amountWithdrawing(balance,withdrawAmount);
+       balance=amountDepositing(balance,depositAmount);
+   }
+}
